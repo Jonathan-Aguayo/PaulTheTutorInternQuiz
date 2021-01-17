@@ -1,0 +1,23 @@
+<script>
+    $('.switch').on('click', function(e) {
+        $(this).toggleClass("selected"); //you can list several class names 
+        e.preventDefault();
+        console.log('clicked');
+    });
+
+    $('.answer').on('click', function() {
+        var id = this.id;
+        if ($(this).data('checked')) {
+            $(this).prop('checked', false);
+            $(this).data('checked', false);
+        } else {
+            $(this).data('checked', true);
+            $(this).closest('label').addClass('selected');
+        }
+        console.log(id);
+
+        $(':radio[name=' + this.name + ']').not(this).data('checked', false);
+        $(':radio[name=' + this.name + ']').not(this).closest('label').removeClass('selected')
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
